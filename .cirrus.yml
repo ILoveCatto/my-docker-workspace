@@ -1,7 +1,7 @@
 task:
     # Basic metadata:
     name: DockerBuild
-    only_if: Always run
+    only_if: changesInclude
 
     # The build machine:
     osx_instance:
