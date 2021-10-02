@@ -3,9 +3,13 @@ task:
     name: Docker Build
     only_if: true
 
-    # The build machine:
-    osx_instance:
-        image: big-sur-base
+    # The build machine
+  compute_engine_instance:
+    image_project: cirrus-images
+    image: family/docker-builder
+    platform: linux
+    cpu: 4
+    memory: 16G
 
     # Environment variables:
     env:
