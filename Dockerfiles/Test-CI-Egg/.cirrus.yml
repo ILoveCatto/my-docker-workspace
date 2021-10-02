@@ -1,0 +1,18 @@
+task:
+    # Basic metadata:
+    name: Docker Build
+    only_if: true
+
+    # The build machine:
+    osx_instance:
+        image: big-sur-base
+
+    # Environment variables:
+    env:
+        DOCKER_USERNAME: lumine
+        DOCKER_PASSWORD: Binnic123!
+
+    # Instructions:
+    Docker_Login_script: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
+    Docker_Build_script: docker build -t quay.io/lumine/ptero-images:test-egg .
+    Docker_Push_script: docker push quay.io/lumine/ptero-images:test-egg
