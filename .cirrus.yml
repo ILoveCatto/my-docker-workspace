@@ -1,11 +1,11 @@
 task:
     # Basic metadata:
-    name: DockerBuild
-    only_if: changesInclude
+    name: Docker Build Push
+    only_if: true
 
     # The build machine:
-    osx_instance:
-        image: big-sur-base
+    container:
+        image: docker:20.10.8-dind-rootless
 
     # Environment variables:
     env:
@@ -14,5 +14,5 @@ task:
 
     # Instructions:
     Docker_Login_script: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
-    Build_Image_script: docker build -t quay.io/lumine/ptero-images:test-egg ./Dockerfiles/Test-CI-Egg/Dockerfile
+    Build_Image_script: docker build -t quay.io/lumine/ptero-images:test-egg ./Dockerfiles/Test-CI-Egg
     Push_Image_script: docker push quay.io/lumine/ptero-images:test-egg
