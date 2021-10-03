@@ -14,5 +14,5 @@ task:
 
     # Instructions:
     Docker_Login_script: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
-    Build_Image_script: docker build -t quay.io/lumine/ptero-images:test-egg ./Dockerfiles/Test-CI-Egg/Dockerfile
+    Build_Image_script: docker build -t quay.io/lumine/ptero-images:test-egg /Dockerfiles/Test-CI-Egg/Dockerfile
     Push_Images_script: docker push quay.io/lumine/ptero-images:test-egg
