@@ -4,8 +4,8 @@ task:
     only_if: true
 
     # The build machine:
-    container:
-        image: docker:20.10.8
+    osx_instance:
+        image: big-sur-base
 
     # Environment variables:
     env:
