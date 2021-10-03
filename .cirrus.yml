@@ -1,11 +1,10 @@
 task:
     # Basic metadata:
     name: Docker Build Push
-    only_if: true
 
     # The build machine:
-    osx_instance:
-        image: big-sur-base
+    docker_builder:
+      only_if: true
 
     # Environment variables:
     env:
