@@ -1,10 +1,14 @@
 task:
     # Basic metadata:
     name: Docker Build Push
+    only_if: true
 
     # The build machine:
     docker_builder:
-      only_if: true
+      setup_script:
+    - docker buildx create --name multibuilder
+    - docker buildx use multibuilder
+    - docker buildx inspect --bootstrap
 
     # Environment variables:
     env:
