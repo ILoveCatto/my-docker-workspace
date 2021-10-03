@@ -1,4 +1,4 @@
-ask:
+task:
     # Basic metadata:
     name: Docker Build Push
     only_if: true
