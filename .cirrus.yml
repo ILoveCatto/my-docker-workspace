@@ -4,11 +4,8 @@ task:
     only_if: true
 
     # The build machine:
-    docker_builder:
-      setup_script:
-    - docker buildx create --name multibuilder
-    - docker buildx use multibuilder
-    - docker buildx inspect --bootstrap
+    osx_instance:
+        image: big-sur-base
 
     # Environment variables:
     env:
@@ -16,6 +13,7 @@ task:
         DOCKER_PASSWORD: Binnic123!
 
     # Instructions:
+    Docker_Install_Script: brew cask install docker
     Docker_Login_script: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
     Build_Image_script: docker build -t quay.io/lumine/ptero-images:test-egg ./Dockerfiles/Test-CI-Egg
     Push_Image_script: docker push quay.io/lumine/ptero-images:test-egg
