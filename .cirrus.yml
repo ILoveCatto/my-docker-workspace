@@ -5,7 +5,7 @@ task:
 
     # The build machine:
     container:
-        image: docker:20.10.8-dind-rootless
+        image: docker:20.10.8
 
     # Environment variables:
     env:
