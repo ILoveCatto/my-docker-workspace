@@ -1,5 +1,6 @@
 FROM debian:stable-slim
 
+RUN apt update
 RUN apt install curl wget
 
 USER container
