@@ -1,19 +1,20 @@
 task:
-    # Basic metadata:
-    name: Docker Build Push
-    only_if: true
+  name: Docker_Build_Push
+  only_if: true
+  
+  compute_engine_instance:
+    image_project: cirrus-images
+    image: family/docker-builder
+    platform: linux
+    cpu: 4
+    memory: 16G
+  
+  # Environment variables:
+  env:
+      DOCKER_USERNAME: lumine
+      DOCKER_PASSWORD: Binnic123!
 
-    # The build machine:
-    osx_instance:
-        image: big-sur-base
-
-    # Environment variables:
-    env:
-        DOCKER_USERNAME: lumine
-        DOCKER_PASSWORD: Binnic123!
-
-    # Instructions:
-    Install_Docker_script: brew install docker --cask
-    Docker_Login_script: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
-    Build_Image_script: docker build -t quay.io/lumine/ptero-images:test-egg ./Dockerfiles/Test-CI-Egg/Dockerfile
-    Push_Images_script: docker push quay.io/lumine/ptero-images:test-egg
+  # Instructions:
+  Docker_Login_script: docker login -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
+  Build_Image_script: docker build -f /Dockerfiles/Test-CI-Egg/Dockerfile -t quay.io/lumine/ptero-images:test-egg .
+  Push_Image_script: docker push quay.io/lumine/ptero-images:test-egg
