@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 RUN apt update
-RUN apt install curl wget
+RUN apt install curl wget -y
 
 USER container
 ENV  USER=container HOME=/home/container
